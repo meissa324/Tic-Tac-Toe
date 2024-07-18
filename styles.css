@@ -4,6 +4,10 @@
 }
 div{
     border: 1rem solid black;
+    
+}
+
+.game-container{
     min-width: 100svw;
     min-height: 100svh;
 }
