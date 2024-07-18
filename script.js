@@ -77,6 +77,8 @@ const gameFunctions = (function(){
         turn:"",
         
         winner: "",
+
+        board: [],
     };
     //sets the player's turn
     function setPlayerTurn(){
@@ -177,6 +179,11 @@ const gameDomManipulation = (function(){
 
 
 /* TODO
+*query selector all(children of ul), and run a array loop to clear all their text, content
+*make it so a player can't take an already taken position, its still their turn
+*finish ui
+*show popup at start and end of games
+*
 *
 *
 *
