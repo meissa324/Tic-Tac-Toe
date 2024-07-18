@@ -60,7 +60,7 @@ const gameFunctions = (function(){
             // row/column
             
             //diagonal
-            win1: ['3/1','2/2','1/3'],
+            win1: ['1/1','2/2','3/3'],
             win2: ['1/3','2/2','3/1'],
             //full rows
             win3: ['1/1','1/2','1/3'],
@@ -131,36 +131,9 @@ gameFunctions.gameBoard.players.push(player2);
 
 //set first turn
 gameFunctions.setPlayerTurn();
+// console.log("First turn",gameFunctions.gameBoard.turn);
 //gameFunctions.gameBoard.turn -> to get who's turn it is
 
-//! below is just tests
-//'3/1','2/2','1/3'
-gameFunctions.setPlayerPosition("3/1");//player1
-gameFunctions.setPlayerPosition("1/3");//player2
-gameFunctions.setPlayerPosition("2/6");//player1
-gameFunctions.setPlayerPosition("1/3");//player2
-gameFunctions.setPlayerPosition("1/4");//player1
-gameFunctions.setPlayerPosition("1/3");//player2
-gameFunctions.setPlayerPosition("1/3");//player1
-gameFunctions.setPlayerPosition("1/9");//player2
-gameFunctions.setPlayerPosition("1/3");//player1
-
-
-
-
-//'3/1','2/2','1/3'
-gameFunctions.setPlayerPosition("3/1");//player1
-gameFunctions.setPlayerPosition("1/3");//player2
-gameFunctions.setPlayerPosition("2/2");//player1
-gameFunctions.setPlayerPosition("1/3");//player2
-gameFunctions.setPlayerPosition("1/3");//player1
-
-console.log(player1);//but he won, why didn't it reset???
-gameFunctions.setPlayerPosition("3/1");//player1
-gameFunctions.setPlayerPosition("1/3");//player2
-gameFunctions.setPlayerPosition("2/2");//player1
-gameFunctions.setPlayerPosition("1/3");//player2
-gameFunctions.setPlayerPosition("1/3");//player1
 
 
 const gameDomManipulation = (function(){
@@ -170,11 +143,41 @@ const gameDomManipulation = (function(){
 
     //target its id //i think it auto works by closes descendant id to the cursor
     domBoard.addEventListener("click",(e)=>{
+
+        //put all the event listeners info into target
         let target = e.target;
-        let positionOnBoard = target.id; 
-        console.log(positionOnBoard);
+        //get the closest descendant id
+        let positionID = target.id; 
+
+        console.log(positionID);
+
+        
+        
+        // let position = document.querySelector("#"+positionID);
+        let position = document.getElementById(positionID);
+
+        //set that position's icon
+        if(gameFunctions.gameBoard.turn === gameFunctions.gameBoard.players[0]){
+            position.textContent = "X";
+
+        }
+        else{
+            position.textContent = "O";
+
+        }
+
+        //set player position based where clicked
+        gameFunctions.setPlayerPosition(positionID);//this changes turn
     })
+
 
     
 
 })();
+
+
+/* TODO
+*
+*
+*
+*/
