@@ -34,3 +34,9 @@ body *{
     display: flex;
     flex-direction: column;
 }
+
+ul > li{ /*center x and o */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

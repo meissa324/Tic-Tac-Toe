@@ -180,7 +180,7 @@ const gameDomManipulation = (function(){
         
     })
 
-    //reset 
+    //reset dom board visual
 
     
 
