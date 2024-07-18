@@ -35,7 +35,12 @@ const gameFunctions = (function(){
         //reset player's board
         gameBoard.players[0].board.splice(0, gameBoard.players[0].board.length);
         gameBoard.players[1].board.splice(0, gameBoard.players[1].board.length);
-        setPlayerTurn();//sets player turn
+
+        //reset gameBoard
+        gameBoard.board.splice(0,gameBoard.board.length);
+        //reset player turns
+        setPlayerTurn();
+        //reset initial selected player position
         gameBoard.boardPosition = "";//do i need this if there is no input?
     
     }
@@ -100,6 +105,7 @@ const gameFunctions = (function(){
     function setPlayerPosition(position){//sets position and continues the game
         //add position to player board
         gameBoard.turn.board.push(position);//turn returns/holds the player object
+        gameBoard.board.push(position);//add it to gameBoard's board
         
         //check if they won after setting this position
         whoWon()
@@ -143,9 +149,9 @@ const gameDomManipulation = (function(){
     //get the board element from dom
     let domBoard = document.querySelector(".board-container");
 
-    //target its id //i think it auto works by closes descendant id to the cursor
+    //target board position id
     domBoard.addEventListener("click",(e)=>{
-
+        
         //put all the event listeners info into target
         let target = e.target;
         //get the closest descendant id
@@ -154,24 +160,27 @@ const gameDomManipulation = (function(){
         console.log(positionID);
 
         
+        if(!gameFunctions.gameBoard.board.includes(positionID) ){//if the position is not already on the board
+                // let position = document.querySelector("#"+positionID);
+            let position = document.getElementById(positionID);
+
+            //set that position's icon
+            if(gameFunctions.gameBoard.turn === gameFunctions.gameBoard.players[0]){
+                position.textContent = "X";
+
+            }
+            else{
+                position.textContent = "O";
+
+            }
+
+            //set player position based where clicked
+            gameFunctions.setPlayerPosition(positionID);//this changes turn
+        }
         
-        // let position = document.querySelector("#"+positionID);
-        let position = document.getElementById(positionID);
-
-        //set that position's icon
-        if(gameFunctions.gameBoard.turn === gameFunctions.gameBoard.players[0]){
-            position.textContent = "X";
-
-        }
-        else{
-            position.textContent = "O";
-
-        }
-
-        //set player position based where clicked
-        gameFunctions.setPlayerPosition(positionID);//this changes turn
     })
 
+    //reset 
 
     
 
@@ -180,7 +189,6 @@ const gameDomManipulation = (function(){
 
 /* TODO
 *query selector all(children of ul), and run a array loop to clear all their text, content
-*make it so a player can't take an already taken position, its still their turn
 *finish ui
 *show popup at start and end of games
 *
