@@ -164,9 +164,17 @@ gameFunctions.setPlayerPosition("1/3");//player1
 
 
 const gameDomManipulation = (function(){
+    
+    //get the board element from dom
     let domBoard = document.querySelector(".board-container");
-    domBoard.addEventListener("click",()=>{
-        console.log("its been clicked");
+
+    //target its id //i think it auto works by closes descendant id to the cursor
+    domBoard.addEventListener("click",(e)=>{
+        let target = e.target;
+        let positionOnBoard = target.id; 
+        console.log(positionOnBoard);
     })
+
+    
 
 })();
