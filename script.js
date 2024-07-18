@@ -133,7 +133,7 @@ gameFunctions.gameBoard.players.push(player2);
 gameFunctions.setPlayerTurn();
 //gameFunctions.gameBoard.turn -> to get who's turn it is
 
-
+//! below is just tests
 //'3/1','2/2','1/3'
 gameFunctions.setPlayerPosition("3/1");//player1
 gameFunctions.setPlayerPosition("1/3");//player2
@@ -164,6 +164,6 @@ gameFunctions.setPlayerPosition("1/3");//player1
 
 
 const gameDomManipulation = (function(){
-
+    
 
 })();
