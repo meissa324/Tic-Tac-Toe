@@ -14,16 +14,19 @@ const gameFunctions = (function(){
             
             if( gameBoard.allWinningBoards[boardArrKey].every((element) => gameBoard.players[0].board.includes(element)) ){ //if every element of this winning board in play1 array 
                 resetGame();//end game after they won
-                return console.log("player1 Won!");
+                gameDomManipulation.setResult("player 1 won");
+                console.log(player1.name+"player1 Won!");
             }
 
             else if( gameBoard.allWinningBoards[boardArrKey].every((element) => gameBoard.players[1].board.includes(element)) ){ //if every element of this winning board in play2 array 
                 resetGame();//end game after they won
-                return console.log("player2 Won!");
+                gameDomManipulation.setResult("player 2 won");
+                console.log("player2 Won!");
             }
 
             else if(isBoardFull()===true){
                 console.log("tie!");
+                gameDomManipulation.setResult("It was a Tie!");
                 resetGame();
             }
             
@@ -204,29 +207,38 @@ const gameDomManipulation = (function(){
         gameFunctions.resetGame();
     })
 
-    
+    //select player1 and player2 element
     let player1Element= document.querySelector(".player1");
     let player2Element= document.querySelector(".player2");
-    player1Element.setAttribute("style","background-color:blue;");//start the game by highlighting player1 element
+    let result = document.querySelector(".game-result")
+
+    player1Element.setAttribute("style","background-color:#EF5A6F;");//start the game by highlighting player1 element
 
     function highlightPlayer(){//highlights the current player's div, if its their turn
         //when its player1's turn,take the first child and make its background color blue
         if(gameFunctions.gameBoard.turn === gameFunctions.gameBoard.players[0]){
-            player1Element.setAttribute("style","background-color:blue;")//highlight player1
+            player1Element.setAttribute("style","background-color:#EF5A6F;")//highlight player1
             player2Element.setAttribute("style","background-color: transparent;")//don't highlight player2
             console.log("player1's turn");
         }
         else if(gameFunctions.gameBoard.turn === gameFunctions.gameBoard.players[1]){
-            player2Element.setAttribute("style","background-color:blue;")//highlight player2
+            player2Element.setAttribute("style","background-color:#EF5A6F;")//highlight player2
             player1Element.setAttribute("style","background-color: transparent;")//don't highlight player1
             console.log("player2's turn");
 
         }
     }
 
+    function setResult(message){
+        result.textContent = message;
+    }
+
+    //on game reset, set the result?
+
     return { 
         resetBoard,
         highlightPlayer,
+        setResult,
     }
 
 })();
@@ -234,8 +246,8 @@ const gameDomManipulation = (function(){
 
 /* TODO
 * show popup at start and end of games
-* 
-*
+* let players input name
+* if no name, give default of player1 and player2
 *
 *
 */
