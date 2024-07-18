@@ -1,0 +1,12 @@
+/** structure */
+:root{
+    font-size: 16px;
+}
+div{
+    border: 1rem solid black;
+    min-width: 100svw;
+    min-height: 100svh;
+}
+/** properties/style */
+
+/** layout */
