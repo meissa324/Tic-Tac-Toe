@@ -2,23 +2,35 @@
 :root{
     font-size: 16px;
 }
-div{
-    border: 1rem solid black;
+body *{
+    border: 0.5rem solid black;
     
 }
 
-.game-container{
+
+
+/** properties/style */
+
+.game-column{
     min-width: 100svw;
     min-height: 100svh;
 }
 
 .board-container{
-
+    min-width: 20rem;
+    min-height: 20rem;
 }
-/** properties/style */
 
 /** layout */
 
 .board-container{
-    
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+
+}
+
+.game-column{
+    display: flex;
+    flex-direction: column;
 }
