@@ -112,6 +112,9 @@ const gameFunctions = (function(){
         
         //give next player the turn
         setPlayerTurn()
+
+        //!urgent
+        gameDomManipulation.highlightPlayer();
     }
 
     return {
@@ -148,6 +151,7 @@ const gameDomManipulation = (function(){
     
     //get the board element from dom
     let domBoard = document.querySelector(".board-container");
+    let resetButton = document.querySelector(".reset");
 
     //target board position id
     domBoard.addEventListener("click",(e)=>{
@@ -195,19 +199,42 @@ const gameDomManipulation = (function(){
 
     }
 
+    //target reset button
+    resetButton.addEventListener("click",()=>{
+        gameFunctions.resetGame();
+    })
+
+    
+    let player1Element= document.querySelector(".player1");
+    let player2Element= document.querySelector(".player2");
+    player1Element.setAttribute("style","background-color:blue;");//start the game by highlighting player1 element
+
+    function highlightPlayer(){//highlights the current player's div, if its their turn
+        //when its player1's turn,take the first child and make its background color blue
+        if(gameFunctions.gameBoard.turn === gameFunctions.gameBoard.players[0]){
+            player1Element.setAttribute("style","background-color:blue;")//highlight player1
+            player2Element.setAttribute("style","background-color: transparent;")//don't highlight player2
+            console.log("player1's turn");
+        }
+        else if(gameFunctions.gameBoard.turn === gameFunctions.gameBoard.players[1]){
+            player2Element.setAttribute("style","background-color:blue;")//highlight player2
+            player1Element.setAttribute("style","background-color: transparent;")//don't highlight player1
+            console.log("player2's turn");
+
+        }
+    }
+
     return { 
         resetBoard,
+        highlightPlayer,
     }
 
 })();
 
-//gameDomManipulation.resetBoard()
 
 /* TODO
-*query selector all(children of ul), and run a array loop to clear all their text, content
-*finish ui
-*show popup at start and end of games
-*
+* show popup at start and end of games
+* 
 *
 *
 *

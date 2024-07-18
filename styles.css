@@ -2,10 +2,10 @@
 :root{
     font-size: 16px;
 }
-body *{
+/* body *{
     border: 0.5rem solid black;
     
-}
+} */
 
 
 
@@ -16,10 +16,6 @@ body *{
     min-height: 100svh;
 }
 
-.board-container{
-    min-width: 20rem;
-    min-height: 20rem;
-}
 
 /** layout */
 
@@ -27,6 +23,13 @@ body *{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
+    gap: 1rem;
+
+    /*properties*/
+    min-width: 20rem;
+    min-height: 20rem;
+    background-color: black;/*to see gaps color*/
+    width: 60%;
 
 }
 
@@ -39,4 +42,40 @@ ul > li{ /*center x and o */
     display: flex;
     justify-content: center;
     align-items: center;
+
+    /*properties*/
+    background-color: white;
 }
+
+header{
+    flex: 1 1 0; 
+    display: flex;
+    justify-content: center;
+}
+
+header div{
+    font-size: 2rem;
+    width: 60%;
+    height: 60%;
+    display: flex;/*to center text*/
+    justify-content: center;
+    align-items: center;
+    background-color: red;
+    border:2px solid red; 
+    clip-path: polygon(0% 0%, 100% 0%, 90% 100%, 10% 100%);/* top-L, top-R, bottom-R, bottom-L */
+}
+main{
+    flex: 4 1 0; /*Make main 5x bigger than header*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10%;
+    flex: 1 1 0;
+}
+
