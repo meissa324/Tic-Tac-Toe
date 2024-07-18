@@ -186,12 +186,22 @@ const gameDomManipulation = (function(){
 
     function resetBoard(){
         //dont forget to call resetBoard in resetGame()//it should really be called reset game
+        allBoardPositions = document.querySelectorAll("ul>li");//creates node list
+        boardPositionsArr = Array.from(allBoardPositions);//turn to an array
+
+        boardPositionsArr.forEach((position)=>{
+            position.textContent = "";
+        })
+
     }
 
-    
+    return { 
+        resetBoard,
+    }
 
 })();
 
+//gameDomManipulation.resetBoard()
 
 /* TODO
 *query selector all(children of ul), and run a array loop to clear all their text, content
