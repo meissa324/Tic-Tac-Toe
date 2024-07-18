@@ -13,25 +13,25 @@ const gameFunctions = (function(){
         for(const boardArrKey in gameBoard.allWinningBoards){//for every allWinningBoard property 
             
             if( gameBoard.allWinningBoards[boardArrKey].every((element) => gameBoard.players[0].board.includes(element)) ){ //if every element of this winning board in play1 array 
-                endGame();//end game after they won
+                resetGame();//end game after they won
                 return console.log("player1 Won!");
             }
 
             else if( gameBoard.allWinningBoards[boardArrKey].every((element) => gameBoard.players[1].board.includes(element)) ){ //if every element of this winning board in play2 array 
-                endGame();//end game after they won
+                resetGame();//end game after they won
                 return console.log("player2 Won!");
             }
 
             else if(isBoardFull()===true){
                 console.log("tie!");
-                endGame();
+                resetGame();
             }
             
         }
     }
     
     //reset all gameBoard Properties
-    function endGame(){
+    function resetGame(){
         //reset player's board
         gameBoard.players[0].board.splice(0, gameBoard.players[0].board.length);
         gameBoard.players[1].board.splice(0, gameBoard.players[1].board.length);
@@ -88,7 +88,7 @@ const gameFunctions = (function(){
     //sets the player's turn
     function setPlayerTurn(){
         if( isBoardFull() === true ){//if board is full on next turn, then end the game
-            endGame();
+            resetGame();
         }
         else if (gameBoard.players[0].board.length === 0 && gameBoard.players[1].board.length === 0){//if both player1 and 2 haven't made a move, the game starts w/ player1's turn
             return gameBoard.turn = gameBoard.players[0];
@@ -118,7 +118,7 @@ const gameFunctions = (function(){
         createPlayer,
         gameBoard,
         whoWon,
-        endGame,
+        resetGame,
         isBoardFull,
         setPlayerTurn,
         setPlayerPosition,
@@ -181,6 +181,12 @@ const gameDomManipulation = (function(){
     })
 
     //reset dom board visual
+    //select all the li elements as an array
+    //loop though the array and reset each of their textContent to and empty string
+
+    function resetBoard(){
+        //dont forget to call resetBoard in resetGame()//it should really be called reset game
+    }
 
     
 
