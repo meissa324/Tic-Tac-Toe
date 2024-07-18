@@ -164,6 +164,9 @@ gameFunctions.setPlayerPosition("1/3");//player1
 
 
 const gameDomManipulation = (function(){
-    
+    let domBoard = document.querySelector(".board-container");
+    domBoard.addEventListener("click",()=>{
+        console.log("its been clicked");
+    })
 
 })();
