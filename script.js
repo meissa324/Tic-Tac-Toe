@@ -40,8 +40,8 @@ const gameFunctions = (function(){
         gameBoard.board.splice(0,gameBoard.board.length);
         //reset player turns
         setPlayerTurn();
-        //reset initial selected player position
-        gameBoard.boardPosition = "";//do i need this if there is no input?
+
+        gameDomManipulation.resetBoard();//should i reset board automatically?
     
     }
     
